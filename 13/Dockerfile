@@ -39,9 +39,7 @@ RUN asterisk-13.0.1/contrib/scripts/install_prereq install
 
 WORKDIR /usr/src/asterisk/asterisk-13.0.1
 
-RUN ./contrib/scripts/get_ilbc_source.sh > /dev/null 2>&1
-RUN ./contrib/scripts/get_mp3_source.sh > /dev/null 2>&1
-RUN ./contrib/scripts/get_swagger_ui.sh > /dev/null 2>&1
+RUN ./contrib/scripts/get_ilbc_source.sh; ./contrib/scripts/get_mp3_source.sh; RUN ./contrib/scripts/get_swagger_ui.sh; echo 1
 RUN ./contrib/scripts/install_prereq install-unpackaged
 RUN ldconfig
 RUN ./bootstrap.sh
