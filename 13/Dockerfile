@@ -39,7 +39,7 @@ RUN asterisk-13.0.1/contrib/scripts/install_prereq install
 
 WORKDIR /usr/src/asterisk/asterisk-13.0.1
 
-RUN ./contrib/scripts/get_ilbc_source.sh; ./contrib/scripts/get_mp3_source.sh; RUN ./contrib/scripts/get_swagger_ui.sh; echo 1
+RUN ./contrib/scripts/get_ilbc_source.sh; ./contrib/scripts/get_mp3_source.sh; ./contrib/scripts/get_swagger_ui.sh; echo 1
 RUN ./contrib/scripts/install_prereq install-unpackaged
 RUN ldconfig
 RUN ./bootstrap.sh
@@ -62,7 +62,7 @@ RUN sed -i "s/; faxdetect = yes/faxdetect = yes  /g" /etc/asterisk/sip.conf
 
 # Cleanup stuff
 RUN rm -rf /usr/src/asterisk/*
-RUN DEBIAN_FRONTEND=noninteractive apt-get --yes apt-get clean all
+RUN DEBIAN_FRONTEND=noninteractive apt-get --yes clean all
 
 ADD run.sh /run.sh
 CMD ["/run.sh"]
